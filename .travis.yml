@@ -1,0 +1,7 @@
+language: dart
+dart:
+  - stable
+dart_task:
+  - test: --platform vm
+  - test: --platform chrome --exclude-tags vm-only
+  - dartanalyzer: --fatal-infos --fatal-warnings lib test
