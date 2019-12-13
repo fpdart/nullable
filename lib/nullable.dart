@@ -1,29 +1,10 @@
-library nullable;
-
-nullable<T>(T value, [defaultValue]) => Nullable<T>(value)._call(defaultValue);
-
-nullablec<T>(T value) => Nullable<T>(value);
-
-setUnlessNull(Function setter, [value, defaultValue]) {
-  if (null != value) return setter(value);
-
-  if (null != defaultValue) return setter(defaultValue);
+extension Nullable1<T, V> on _F1<T, V> {
+  T nullable(V v) => v == null ? null : this(v);
 }
 
-class Nullable<T> {
-  T _value;
-
-  Nullable(this._value);
-
-  operator |(defaultValue) => _call(defaultValue);
-
-  _call(defaultValue) {
-    if (null == _value) {
-      if (null == defaultValue) return null;
-
-      return (defaultValue is Function) ? defaultValue() : defaultValue;
-    }
-
-    return _value;
-  }
+extension Nullable2<T, V1, V2> on _F2<T, V1, V2> {
+  T nullable(V1 v1, V2 v2) => (v1 == null || v2 == null) ? null : this(v1, v2);
 }
+
+typedef T _F1<T, V>(V v);
+typedef T _F2<T, V1, V2>(V1 v1, V2 v2);
