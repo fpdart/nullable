@@ -1,6 +1,6 @@
 name: nullable
-version: 1.0.0
-description: Nullable extension on functions
+version: 1.0.1
+description: Nullable extension on functions. Returns null on null arguments.
 environment:
   sdk: '>=2.7.0 <3.0.0'
 dev_dependencies:
