@@ -1,20 +1,12 @@
-# Nullable setters in dart
+# Nullable extension on functions
 
+This extension introduces the `nullable` version of functions. The nullable version returns
+null on null input and calls the underlying function otherwise. 
 ```dart
-class Bar {
-  dynamic a;
-  dynamic b;
-  dynamic c;
-  dynamic d;
-
-  Bar(a, b, c, d) {
-    setUnlessNull((_) => this.a = _, a);
-    setUnlessNull((_) => this.b = _, b);
-    setUnlessNull((_) => this.c = _, c, 3);
-    setUnlessNull((_) => this.d = _, d, 'qq');
-  }
+void main() {
+  int.parse('12'); // 12
+  int.parse(null); // Error: Invalid argument
+  int.parse.nullable('12'); // 12
+  int.parse.nullable(null); // null
 }
-
-var bar = Bar(null, 2, null, 'ww');
-print([bar.a, bar.b, bar.c, bar.d]); // [null, 2, 3, 'ww']
 ```
